@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { getStore, dispatch } from "./store/useNumStore";
+import "./App.css";
+import TestComponent from "./TestComponent";
 
 function App() {
+  console.log("rendered app");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div onClick={() => dispatch({ type: "add", payload: 10 })}>
+        {getStore().count}
+      </div>
+
+      <TestComponent />
     </div>
   );
 }
